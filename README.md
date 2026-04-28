@@ -102,13 +102,12 @@ data_bit = 0 → out = -carrier
 
 ---
 
-### 🔹 Square Carrier BPSK Output
+### Square Carrier BPSK Output
 
-**Full View (Overall Behavior)**
-![Square Full](docs/waveform_square_full.png)
+![Square Waveform](docs/waveform_square_full.png)
 
-**Zoomed View (Phase Inversion Verification)**
-![Square Zoom](docs/waveform_square_zoom.png)
+- Output follows carrier for `data_bit = 1`
+- Output is inverted for `data_bit = 0`
 
 ---
 
