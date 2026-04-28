@@ -7,7 +7,7 @@ Two carrier generation approaches are explored:
 - **LUT-based cosine waveform** using discrete sample storage  
 - **Square wave carrier** for simplified modulation comparison  
 
-The design is verified through ModelSim simulations, focusing on **synchronous behavior, timing correctness, and phase inversion validation** under different input conditions.
+- The design is verified through ModelSim simulations, focusing on **synchronous behavior, timing correctness, and phase inversion validation** under different input conditions.
 ---
 
 ## ⚙️ Architecture
