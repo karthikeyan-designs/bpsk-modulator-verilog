@@ -11,15 +11,17 @@ The design is verified through ModelSim simulations, focusing on **synchronous b
 ---
 
 ## ⚙️ Architecture
+
+![BPSK Architecture](docs/bpsk_block_diagram.png)
+
 Carrier Generator (LUT / Square) → BPSK Modulator → Output
 
-
-- **Carrier Generator**: Produces waveform samples (cosine or square)
-- **BPSK Modulator**: Performs phase inversion based on input data bit
+- **Carrier Generator**: Produces waveform samples (cosine using LUT or square wave)
+- **BPSK Modulator**: Performs phase inversion of the carrier based on the input data bit
 
 ---
 
-## 🔑 Key Logic
+## Key Logic
 
 BPSK modulation is implemented using **phase inversion of the carrier signal** based on the input data bit:
 
@@ -31,22 +33,24 @@ data_bit = 0 → out = -carrier      (180° phase)
 
 ## 📂 Repository Structure
 
+```
 
-/src
-bpsk.v
-cos_carrier.v
-square_carrier.v
-/tb
-bpsk_tb.v
-/docs
-waveform_cos.png
-waveform_square.png
-README.md
-
+├── src
+│ ├── bpsk.v
+│ ├── cos_carrier.v
+│ 
+├── tb
+│ └── bpsk_sqr_tb.v
+├── docs
+│ ├── waveform_cos_full.png
+│ ├── waveform_cos_zoom.png
+│ └── waveform_square_full.png
+└── README.md
+```
 
 ---
 
-## 🧠 Design Details
+## Design Details
 
 This project implements BPSK modulation using **two carrier generation approaches**:
 
@@ -92,7 +96,7 @@ data_bit = 0 → out = -carrier
 
 ## Results
 
-### 🔹 Cosine Carrier BPSK Output
+### Cosine Carrier BPSK Output
 
 **Full View (Overall Behavior)**
 ![Cosine Full](docs/waveform_cos_full.png)
