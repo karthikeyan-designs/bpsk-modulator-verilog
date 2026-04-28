@@ -3,14 +3,15 @@
 ## Overview
 This project implements a **Binary Phase Shift Keying (BPSK) modulator** using Verilog HDL, where the carrier signal is modulated based on the input data bit through phase inversion.
 
-Two carrier generation approaches are explored:
-- **LUT-based cosine waveform** using discrete sample storage  
-- **Square wave carrier** for simplified modulation comparison  
+Two carrier generation approaches are implemented:
+- **LUT-based cosine waveform** using discrete sampled values  
+- **Square wave carrier** for simple and baseline modulation comparison  
 
-- The design is verified through ModelSim simulations, focusing on **synchronous behavior, timing correctness, and phase inversion validation** under different input conditions.
+The design is verified in ModelSim, focusing on **synchronous operation, timing behavior, and correct phase inversion** across different input conditions.
+
 ---
 
-## ⚙️ Architecture
+## Architecture
 
 ![BPSK Architecture](docs/bpsk_block_diagram.png)
 
@@ -25,20 +26,20 @@ Carrier Generator (LUT / Square) → BPSK Modulator → Output
 
 BPSK modulation is implemented using **phase inversion of the carrier signal** based on the input data bit:
 
-``` id="code1"
+```
 data_bit = 1 → out = carrier       (0° phase)
 data_bit = 0 → out = -carrier      (180° phase)
 ```
 
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 
+.
 ├── src
 │ ├── bpsk.v
 │ ├── cos_carrier.v
-│ 
 ├── tb
 │ └── bpsk_sqr_tb.v
 ├── docs
@@ -58,9 +59,10 @@ This project implements BPSK modulation using **two carrier generation approache
 - Carrier is a **square wave** (e.g., toggling every clock → period = 2×clock period)
 - Simple to implement using a flip-flop/toggle logic
 - Useful for **initial validation** of BPSK logic:
-
+```
 data_bit = 1 → out = carrier
 data_bit = 0 → out = -carrier
+```
 
 - Limitation: not a true sinusoidal carrier → **not representative of practical RF systems**
 
@@ -85,7 +87,7 @@ data_bit = 0 → out = -carrier
 - Observed **1-cycle latency** due to non-blocking assignments  
 - Testbench aligned to avoid race conditions (stimulus changes away from clock edge)
 
-## 🐞 Debugging & Validation
+## Debugging & Validation
 
 - Fixed mismatch caused by improper stimulus timing (race condition in TB)  
 - Ensured input signals are stable before clock edge  
@@ -104,6 +106,8 @@ data_bit = 0 → out = -carrier
 **Zoomed View (Phase Inversion Verification)**
 ![Cosine Zoom](docs/waveform_cos_zoom.png)
 
+- Verified correct 180° phase shift based on `data_bit`
+
 ---
 
 ### Square Carrier BPSK Output
@@ -112,6 +116,8 @@ data_bit = 0 → out = -carrier
 
 - Output follows carrier for `data_bit = 1`
 - Output is inverted for `data_bit = 0`
+
+- Phase inversion is clearly visible due to discrete amplitude switching
 
 ---
 
