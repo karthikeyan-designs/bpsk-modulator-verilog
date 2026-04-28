@@ -1,6 +1,6 @@
 # BPSK Modulator in Verilog (LUT & Square Carrier)
 
-## 📌 Overview
+## Overview
 This project implements a **Binary Phase Shift Keying (BPSK) modulator** using Verilog HDL, where the carrier signal is modulated based on the input data bit through phase inversion.
 
 Two carrier generation approaches are explored:
